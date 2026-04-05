@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test'
 
 test.describe('Login Page', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/')
+    await page.goto('/lemma-frontend/')
   })
 
   test('redirects to /login when not authenticated', async ({ page }) => {

@@ -5,7 +5,7 @@ export default defineConfig({
   fullyParallel: true,
   retries: 1,
   use: {
-    baseURL: process.env.BASE_URL ?? 'https://sigongjoa.github.io/lemma-frontend',
+    baseURL: (process.env.BASE_URL ?? 'https://sigongjoa.github.io').replace(/\/$/, ''),
     trace: 'on-first-retry',
   },
   projects: [
