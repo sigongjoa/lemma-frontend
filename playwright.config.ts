@@ -5,7 +5,7 @@ export default defineConfig({
   fullyParallel: true,
   retries: 1,
   use: {
-    baseURL: 'https://lemma-15t.pages.dev',
+    baseURL: process.env.BASE_URL ?? 'https://sigongjoa.github.io/lemma-frontend',
     trace: 'on-first-retry',
   },
   projects: [

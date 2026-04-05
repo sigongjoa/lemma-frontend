@@ -4,6 +4,6 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: '/lemma/',   // GitHub Pages repo name
+  base: '/lemma-frontend/',   // GitHub Pages repo name
   server: { port: 5173 },
 })

@@ -30,7 +30,7 @@ function RequireAuth({ children, role }: { children: React.ReactNode; role?: 'ad
 
 export default function App() {
   return (
-    <BrowserRouter basename="/lemma">
+    <BrowserRouter basename="/lemma-frontend">
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/" element={<RootRedirect />} />
