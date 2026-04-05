@@ -33,6 +33,17 @@ export default function SubmitPage() {
       const { submissionId } = await api.submitAssignment(formData)
       navigate(`/student/assignments/${id}/feedback?submissionId=${submissionId}`)
     } catch (e) {
+      // 409 = already submitted — fetch the existing submission and navigate to it
+      if (e instanceof Error && e.message.includes('Already submitted')) {
+        try {
+          const assignment = await api.getAssignment(id!)
+          const sub = (assignment as unknown as { my_submission: { id: string } | null }).my_submission
+          if (sub?.id) {
+            navigate(`/student/assignments/${id}/feedback?submissionId=${sub.id}`)
+            return
+          }
+        } catch { /* fall through to error */ }
+      }
       setError(e instanceof Error ? e.message : '제출에 실패했어요')
     } finally { setLoading(false) }
   }
