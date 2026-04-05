@@ -8,7 +8,7 @@ export default function WrongNotesPage() {
   useEffect(() => {
     // Fetch all assignments, then fetch each submission's results
     async function load() {
-      const assignments = await api.getAssignments() as Array<{ id: string; my_submission: { id: string; status: string } | null }>
+      const assignments = await api.getAssignments() as unknown as Array<{ id: string; my_submission: { id: string; status: string } | null }>
       const doneSubmissionIds = assignments
         .filter(a => a.my_submission?.status === 'done')
         .map(a => a.my_submission!.id)

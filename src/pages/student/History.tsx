@@ -24,7 +24,7 @@ export default function HistoryPage() {
 
   useEffect(() => {
     api.getAssignments().then(async (assignments) => {
-      const withSubs = assignments as Array<{ title: string; my_submission: { total_score: number; submitted_at: string; status: string } | null }>
+      const withSubs = assignments as unknown as Array<{ title: string; my_submission: { total_score: number; submitted_at: string; status: string } | null }>
       const done = withSubs
         .filter(a => a.my_submission?.status === 'done')
         .map(a => ({ title: a.title, score: a.my_submission!.total_score, date: a.my_submission!.submitted_at }))
